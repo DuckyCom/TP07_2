@@ -10,6 +10,8 @@ public class HomeController : Controller
         return View("Index");
     }
     public IActionResult ConfigurarJuego(){
+        @ViewBag.Dificultades = Juego.ObtenerDificultades();
+        @ViewBag.Categorias = Juego.ObtenerCategorias();
         if (Juego.ObtenerPreguntas() == null)
         {
             Juego.InicializarJuego();

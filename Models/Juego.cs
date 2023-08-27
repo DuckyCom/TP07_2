@@ -25,8 +25,6 @@ public class Juego{
         return BD.ObtenerDificultades();
     }
     public static void CargarPartida(string username, int dificultad, int categoria){
-        ObtenerDificultades();
-        ObtenerCategorias();
         _preguntas = BD.ObtenerPreguntas(dificultad,categoria);
         _respuestas = BD.ObtenerRespuestas(_preguntas);
     }

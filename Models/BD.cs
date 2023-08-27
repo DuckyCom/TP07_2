@@ -5,19 +5,19 @@ using System.Collections.Generic;
 namespace TP07.Models;
 public class BD{
 
-    private static string _connectionString = @"Server=localhost; Database=PreguntadOrt;Trusted_Conecction=True";
+    private static string _connectionString = @"Server=LAPTOP-88C90MSI\SQLEXPRESS;Database=Preguntados;Trusted_Connection=True";
     
     public static List<Categoria> ObtenerCategorias(){
         using (SqlConnection conexion = new SqlConnection(_connectionString))
         {
-            string sql = "SELECT [Categorias], [Nombre], [Foto] FROM [dbo].[Categorias];";
+            string sql = "SELECT [IdCategoria], [Nombre], [Foto] FROM [dbo].[Categorias];";
             return conexion.Query<Categoria>(sql).ToList();
         }
     }
     public static List<Dificultad> ObtenerDificultades(){
         using (SqlConnection conexion = new SqlConnection(_connectionString))
         {
-            string sql = "SELECT [Dificultades], [nombre] FROM [dbo].[Dificultades];";
+            string sql = "SELECT [IdDificultad], [nombre] FROM [dbo].[Dificultades];";
             return conexion.Query<Dificultad>(sql).ToList();
         }
     }
@@ -65,7 +65,7 @@ public class BD{
             using (SqlConnection conexion = new SqlConnection(_connectionString))
             {
                 string sql = "SELECT [IdRespuesta], [IdPregunta], [Opcion], [Contenido], [Correcta], [Foto] FROM [dbo].[Respuestas] WHERE IdPregunta = @idPregunta;";
-                info2 = conexion.QueryFirstOrDefault<Respuesta>(sql, new { IdPregunta = idPregunta });
+                info2 = conexion.QueryFirstOrDefault<Respuesta>(sql, new { IdPregunta = idPregunta.IdPregunta });
             }
             info.Add(info2);
         }
