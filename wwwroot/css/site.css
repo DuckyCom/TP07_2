@@ -7,6 +7,7 @@
   position: absolute;
   left: 735px;
   top: 774px;
+  text-decoration: none;
 }
 .texto-box-jugar {
   color: #ffffff;
@@ -33,12 +34,15 @@
   top: 413px;
 }
 /*cofiguracion*/
+.configuracion{
+  padding-left: 5%;
+}
 .Padding{
   display: block;
   font-size: 50px;
-  padding-left: 10%;
   margin-bottom: 5%;
-
+  flex-direction: column;
+  clear:both;
 }
 /*final*/
 

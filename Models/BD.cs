@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace TP07.Models;
 public class BD{
 
-    private static string _connectionString = @"Server=LAPTOP-88C90MSI\SQLEXPRESS;Database=Preguntados;Trusted_Connection=True";
+    private static string _connectionString = @"Server=A-PHZ2-CIDI-007; Database=PreguntadOrt; Trusted_Connection=True";
     
     public static List<Categoria> ObtenerCategorias(){
         using (SqlConnection conexion = new SqlConnection(_connectionString))
