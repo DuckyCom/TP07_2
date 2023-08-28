@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace TP07.Models;
 public class BD{
 
-    private static string _connectionString = @"Server=A-PHZ2-CIDI-007; Database=PreguntadOrt; Trusted_Connection=True";
+    private static string _connectionString = @"Server=LAPTOP-88C90MSI\SQLEXPRESS; Database=Preguntados; Trusted_Connection=True";
     
     public static List<Categoria> ObtenerCategorias(){
         using (SqlConnection conexion = new SqlConnection(_connectionString))
@@ -57,17 +57,12 @@ public class BD{
         }
         return info;
     }
-    public static List<Respuesta> ObtenerRespuestas(List<Pregunta> preguntas) {
+    public static List<Respuesta> ObtenerRespuestas() {
         List<Respuesta> info = new List<Respuesta>{};
-        Respuesta info2;
-        foreach (var idPregunta in preguntas)
+        using (SqlConnection conexion = new SqlConnection(_connectionString))
         {
-            using (SqlConnection conexion = new SqlConnection(_connectionString))
-            {
-                string sql = "SELECT [IdRespuesta], [IdPregunta], [Opcion], [Contenido], [Correcta], [Foto] FROM [dbo].[Respuestas] WHERE IdPregunta = @idPregunta;";
-                info2 = conexion.QueryFirstOrDefault<Respuesta>(sql, new { IdPregunta = idPregunta.IdPregunta });
-            }
-            info.Add(info2);
+            string sql = "SELECT [IdRespuesta], [IdPregunta], [Opcion], [Contenido], [Correcta], [Foto] FROM [dbo].[Respuestas]";
+            info = conexion.Query<Respuesta>(sql).ToList();
         }
         return info;
     }

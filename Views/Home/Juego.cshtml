@@ -14,7 +14,7 @@
                       <!-- PUNTAJE ACTUAL: -->
     <div class="puntajeactual">
         <p>Puntaje Actual:</p>
-        <p>7</p>
+        <p>@ViewBag.Puntaje</p>
     </div>
                       <!-- PUNTAJE ACTUAL: -->
                       <!-- PREGUNTA -->
@@ -34,10 +34,10 @@
       string top = (top1.ToString() + "%");
       <div class="boxpregunta" style="top: @top;">
         <div class="textoboxpregunta">
-            <a href='@Url.Action("VerificarRespuesta", "Home", new{idPregunta = ViewBag.Pregunta.IdPregunta, respuesta = item})' style="text-decoration: none; color: #ffffff;">@item.Contenido</a>
+            <a href='@Url.Action("VerificarRespuesta", "Home", new{respuesta = @item.Correcta})' style="text-decoration: none; color: #ffffff;">@item.Contenido</a>
         </div>
       </div>
-      top1+=10;
+      top1+=15;
      }
     }
                       <!-- RESPUESTAS (foreach) -->

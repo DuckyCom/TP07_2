@@ -25,15 +25,23 @@ public class Juego{
         return BD.ObtenerDificultades();
     }
     public static void CargarPartida(string username, int dificultad, int categoria){
+        _username = username;
         _preguntas = BD.ObtenerPreguntas(dificultad,categoria);
-        _respuestas = BD.ObtenerRespuestas(_preguntas);
+        _respuestas = BD.ObtenerRespuestas();
     }
     public static List<Pregunta> ObtenerPreguntas(){
         return _preguntas;
     }
     public static Pregunta ObtenerProximaPregunta(){
         Pregunta preguntarnd;
-        return preguntarnd = _preguntas[0];
+        if (_preguntas.Count() != 0)
+        {
+            return preguntarnd = _preguntas[0];
+        }
+        else
+        {
+            return null;
+        }
     }
     public static List<Respuesta> ObtenerProximasRespuestas(int idPregunta){
         List<Respuesta> respuestas = new List<Respuesta>{};
@@ -46,14 +54,16 @@ public class Juego{
         }
         return respuestas;
     }
-    public static bool VerificarRespuesta(int idPregunta, Respuesta respuesta){
+    public static bool VerificarRespuesta(bool respuesta){
         bool v;
-        if(respuesta.Correcta){
+        if(respuesta){
             _puntajeActual+=5;
             _preguntas.RemoveAt(0);
             v = true;
         }
-        else{
+        else
+        {
+            _preguntas.RemoveAt(0);
             v = false;
         }
         return v;

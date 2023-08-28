@@ -25,6 +25,9 @@
    <label class="btn btn-outline-primary" for="@top">@item.Nombre</label> 
    top1+=1;
    }
+   string top3 = ("btnradio" + top1.ToString());
+   <input type="radio" class="btn-check" name="dificultad" id="@top3" autocomplete="off" checked value=-1>
+   <label class="btn btn-outline-primary" for="@top3">Todas</label> 
   }
   
 </div> 
@@ -41,6 +44,9 @@
    <label class="btn btn-outline-primary" for="@top">@item.Nombre</label> 
    top2+=10;
   }
+  string top4 = ("btnradio" + top2.ToString());
+  <input type="radio" class="btn-check" name="categoria" id="@top4" autocomplete="off" checked value=-1>
+  <label class="btn btn-outline-primary" for="@top4">Aleatorio</label> 
   }
   </div> 
                       <!-- CATEGORIA -->
@@ -48,7 +54,7 @@
 <div class="Padding">
       <div class="col-md-4">
         <label for="validationDefault01" class="form-label">Introduzca su nombre</label>
-        <input type="text" class="form-control" id="validationDefault01" name="username" required="">
+        <input type="text" class="form-control" id="validationDefault01" name="username" required="true">
       </div>
       <div class="col-12">
         <button class="btn btn-primary" type="submit">Confirmar nombre</button>

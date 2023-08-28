@@ -17,6 +17,11 @@ public class HomeController : Controller
             Juego.InicializarJuego();
             return View("ConfigurarJuego");
         }
+        else if (Juego.ObtenerPreguntas().Count() == 0)
+        {
+            Juego.InicializarJuego();
+            return View("ConfigurarJuego");
+        }
         else
         {
             return RedirectToAction("Jugar");
@@ -47,9 +52,9 @@ public class HomeController : Controller
             return View("Fin");
         }
     }
-    [HttpPost]public IActionResult VerificarRespuesta(int idPregunta,Respuesta respuesta){
+    public IActionResult VerificarRespuesta(bool respuesta){
         ViewBag.Puntaje = Juego.ObtenerPuntaje();
-        ViewBag.Correcto = Juego.VerificarRespuesta(idPregunta, respuesta);
+        ViewBag.Correcto = Juego.VerificarRespuesta(respuesta);
         return View("Respuesta");
     }
     
